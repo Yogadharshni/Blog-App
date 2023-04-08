@@ -1,9 +1,13 @@
 import {formatISO9075} from "date-fns";
 import {Link} from "react-router-dom";
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';;
 
 export default function Post({_id,title,summary,cover,content,createdAt,author}) {
 
   return (
+    <Box>
+      <Paper>
     <div className="post">
       <div className="image">
         <Link to={`/post/${_id}`}>
@@ -21,5 +25,7 @@ export default function Post({_id,title,summary,cover,content,createdAt,author})
         <p className="summary">{summary}</p>
       </div>
     </div>
+    </Paper>
+    </Box>
   );
 }

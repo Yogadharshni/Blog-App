@@ -1,6 +1,9 @@
 import {Link} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
 import {UserContext} from "./UserContext";
+import Button from '@mui/material/Button';
+
+
 
 export default function Header() {
   const {setUserInfo,userInfo} = useContext(UserContext);
@@ -25,22 +28,32 @@ export default function Header() {
   const username = userInfo?.username;
 
   return (
+
+ 
+
+ 
     <header>
-      <Link to="/" className="logo">MyBlog</Link>
+
+    <Link to="/" className="logo">
+    Let's Blog
+     </Link>
       <nav>
         {username && (
           <>
-            <Link to="/create">Create new post</Link>
-            <a onClick={logout}>Logout ({username})</a>
+            <Link to="/create"><Button color="secondary">Create new post</Button></Link>
+            <a onClick={logout}><Button variant="contained" size="small">Logout {username}</Button></a>
           </>
         )}
         {!username && (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/login"><Button  sx={{marginLeft:'auto'}}variant="contained" size="small" >Login</Button></Link>
+            <Link to="/register"><Button sx={{marginLeft:'auto'}} variant="contained" size="small" >Register</Button></Link>
           </>
         )}
       </nav>
+
     </header>
+  
+
   );
 }
